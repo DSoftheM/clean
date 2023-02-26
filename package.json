@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open --config webpack.config.ts"
+    "start:dev": "webpack-dev-server --open --config webpack.config.ts"
   },
   "keywords": [],
   "author": "",

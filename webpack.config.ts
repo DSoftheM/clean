@@ -1,10 +1,11 @@
-import { Configuration } from "webpack";
+import { Configuration, HotModuleReplacementPlugin } from "webpack";
+import * as webpackDevServer from "webpack-dev-server";
 
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
-const webpackConfig = {
+const webpackConfig: Configuration = {
     mode: "development",
     entry: "./src/index.tsx",
     output: {
@@ -14,6 +15,7 @@ const webpackConfig = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({ template: "./public/index.html" }),
+        new HotModuleReplacementPlugin(),
     ],
     devServer: {
         port: 3000,
@@ -48,14 +50,9 @@ const webpackConfig = {
     resolve: {
         extensions: [".tsx", ".ts", ".js", ".jsx", ".jpeg"],
         alias: {
-            "@my": path.resolve(__dirname, "src"),
+            "@root": path.resolve(__dirname, "src"),
         },
     },
-};
-
-const testConfig: Configuration = {
-    entry: "./",
-    output: {},
 };
 
 module.exports = webpackConfig;
